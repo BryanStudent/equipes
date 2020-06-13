@@ -1,9 +1,9 @@
-{
-  "name": "template-backend",
+  {
+      "name": "equipes",
   "version": "1.0.0",
   "description": "Template backend para criação de projetos NodeJS",
   "main": "server.js",
-  "repository": "https://github.com/professordezani/template-backend.git",
+  "repository": "https://https://github.com/BryanStudent/equipes.git",
   "author": "Prof. Dr. Henrique Dezani <dezani@fatecriopreto.edu.br>",
   "license": "MIT",
   "scripts": {
