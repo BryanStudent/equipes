@@ -49,7 +49,7 @@ server.put('/equipes/:id', async (request, response) => {
 })
 
 //DELETE 
-server.delete('/equipes/:id', async function(req, res){
+server.delete('/equipes/:id', async (req, res) =>{
     const id = req.params.id;
 
     sql = 'DELETE FROM equipes WHERE id = $1';
