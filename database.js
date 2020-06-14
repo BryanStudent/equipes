@@ -19,7 +19,7 @@ const pool = new Pool({
     CREATE TABLE IF NOT EXISTS equipes
     (
         id serial primary key,
-        nome varchar(255),
+        nome varchar(255) not null,
        valormercado numeric(7,2) not null,
          arena varchar(50) not null
      )
