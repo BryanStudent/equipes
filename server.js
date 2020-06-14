@@ -40,15 +40,13 @@ server.post('/equipes', async function(request, response){
 });
 
 
-//UPDATE (PUT)
-server.put('/equipes/:id', async function(request, response) {
-    const id = request.params.id;
-    const { nome, valormercado, arena } = request.body;
+server.put('/equipes/:id', async (request, response) => {
+    const {id} = request.params;
+    const {nome,valormercado,arena} = request.body;
     const sql = `UPDATE equipes SET nome = $1, valormercado = $2, arena = $3 WHERE id = $4`;
-    await pool.query(sql, [nome, valormercado, arena, id]);
+    await pool.query(sql, [nome,valormercado,arena,id]);
     return response.status(204).send();
 })
-
 
 //DELETE 
 server.delete('/equipes/:id', async function(req, res){
