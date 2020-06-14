@@ -1,8 +1,10 @@
 const express = require('express');
 const Pool = require('pg').Pool;
+const cors = require('cors');
+
 
 const server = express();
-
+server.use(cors());
 
 const pool = new Pool({
     user: 'hulmyfxmbydawc',
@@ -39,21 +41,14 @@ server.post('/equipes', async function(request, response){
 
 
 //UPDATE (PUT)
-server.put('/equipes/:id', async function(req, res){
-    const id = req.params.id;
-    const nome = req.body.nome;
-    const valormercado = req.body.valormercado;
-    const arena = req.body.arena;
-    
+server.put('/equipes/:id', async function(request, response) {
+    const id = request.params.id;
+    const { nome, valormercado, arena } = request.body;
+    const sql = `UPDATE equipes SET nome = $1, valormercado = $2, arena = $3 WHERE id = $4`;
+    await pool.query(sql, [nome, valormercado, arena, id]);
+    return response.status(204).send();
+})
 
-    const sql = `
-    UPDATE equipes SET nome = $1, valormercado = $2, arena = $3 where id = $4
-    `;
-
-    await pool.query(sql, [nome, valormercado, arena]);
-
-    res.send();
-});
 
 //DELETE 
 server.delete('/equipes/:id', async function(req, res){
